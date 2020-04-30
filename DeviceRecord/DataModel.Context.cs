@@ -14,11 +14,23 @@ namespace DeviceRecord
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using System.IO;
+
     public partial class TsEntity : DbContext
     {
+
+        static string connectionString = string.Format("metadata=.\\DataModel.csdl|.\\DataModel.ssdl|.\\DataModel.msl;provider=System.Data.SqlClient;provider connection string=\";data source=(LocalDB)\\MSSQLLocalDB;attachdbfilename={0};integrated security=True;MultipleActiveResultSets=True;App=EntityFramework\";", GetConnectionSting());
+
+        public static string GetConnectionSting()
+        {
+            var exeDirectory = Environment.CurrentDirectory;
+            exeDirectory = exeDirectory.Substring(0, exeDirectory.Length - 10);
+            var dbDirectory = "TechStore.mdf";
+            return Path.Combine(exeDirectory, dbDirectory);
+        }
+
         public TsEntity()
-            : base("name=TsEntity")
+            : base(connectionString)
         {
         }
     
@@ -74,6 +86,96 @@ namespace DeviceRecord
                 new ObjectParameter("responsible", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("insertForSupport", deviceNameParameter, serialNumberParameter, guaranteeEndParameter, sellerParameter, typeParameter, entryDateParameter, priceParameter, placementParameter, responsibleParameter);
+        }
+    
+        public virtual int UpdateAccessoryForSupport(Nullable<int> id, string accessoryName, Nullable<int> serialNumber, Nullable<System.DateTime> guaranteeEnd, string seller, string type, Nullable<System.DateTime> entryDate, string price, string placement, string responsible)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var accessoryNameParameter = accessoryName != null ?
+                new ObjectParameter("accessoryName", accessoryName) :
+                new ObjectParameter("accessoryName", typeof(string));
+    
+            var serialNumberParameter = serialNumber.HasValue ?
+                new ObjectParameter("serialNumber", serialNumber) :
+                new ObjectParameter("serialNumber", typeof(int));
+    
+            var guaranteeEndParameter = guaranteeEnd.HasValue ?
+                new ObjectParameter("guaranteeEnd", guaranteeEnd) :
+                new ObjectParameter("guaranteeEnd", typeof(System.DateTime));
+    
+            var sellerParameter = seller != null ?
+                new ObjectParameter("seller", seller) :
+                new ObjectParameter("seller", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            var entryDateParameter = entryDate.HasValue ?
+                new ObjectParameter("entryDate", entryDate) :
+                new ObjectParameter("entryDate", typeof(System.DateTime));
+    
+            var priceParameter = price != null ?
+                new ObjectParameter("price", price) :
+                new ObjectParameter("price", typeof(string));
+    
+            var placementParameter = placement != null ?
+                new ObjectParameter("placement", placement) :
+                new ObjectParameter("placement", typeof(string));
+    
+            var responsibleParameter = responsible != null ?
+                new ObjectParameter("responsible", responsible) :
+                new ObjectParameter("responsible", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateAccessoryForSupport", idParameter, accessoryNameParameter, serialNumberParameter, guaranteeEndParameter, sellerParameter, typeParameter, entryDateParameter, priceParameter, placementParameter, responsibleParameter);
+        }
+    
+        public virtual int UpdateDeviceForSupport(Nullable<int> id, string deviceName, Nullable<int> serialNumber, Nullable<System.DateTime> guaranteeEnd, string seller, string type, Nullable<System.DateTime> entryDate, string price, string placement, string responsible)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var deviceNameParameter = deviceName != null ?
+                new ObjectParameter("deviceName", deviceName) :
+                new ObjectParameter("deviceName", typeof(string));
+    
+            var serialNumberParameter = serialNumber.HasValue ?
+                new ObjectParameter("serialNumber", serialNumber) :
+                new ObjectParameter("serialNumber", typeof(int));
+    
+            var guaranteeEndParameter = guaranteeEnd.HasValue ?
+                new ObjectParameter("guaranteeEnd", guaranteeEnd) :
+                new ObjectParameter("guaranteeEnd", typeof(System.DateTime));
+    
+            var sellerParameter = seller != null ?
+                new ObjectParameter("seller", seller) :
+                new ObjectParameter("seller", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            var entryDateParameter = entryDate.HasValue ?
+                new ObjectParameter("entryDate", entryDate) :
+                new ObjectParameter("entryDate", typeof(System.DateTime));
+    
+            var priceParameter = price != null ?
+                new ObjectParameter("price", price) :
+                new ObjectParameter("price", typeof(string));
+    
+            var placementParameter = placement != null ?
+                new ObjectParameter("placement", placement) :
+                new ObjectParameter("placement", typeof(string));
+    
+            var responsibleParameter = responsible != null ?
+                new ObjectParameter("responsible", responsible) :
+                new ObjectParameter("responsible", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UpdateDeviceForSupport", idParameter, deviceNameParameter, serialNumberParameter, guaranteeEndParameter, sellerParameter, typeParameter, entryDateParameter, priceParameter, placementParameter, responsibleParameter);
         }
     }
 }

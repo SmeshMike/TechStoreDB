@@ -50,7 +50,7 @@
             this.Refresh = new System.Windows.Forms.Button();
             this.ipTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.netwokNameTextBox = new System.Windows.Forms.TextBox();
+            this.networkNameTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.serialNumberTextBox = new System.Windows.Forms.TextBox();
             this.subnetMaskTextBox = new System.Windows.Forms.TextBox();
@@ -268,17 +268,17 @@
             this.label5.TabIndex = 18;
             this.label5.Text = "IP";
             // 
-            // netwokNameTextBox
+            // networkNameTextBox
             // 
-            this.netwokNameTextBox.Location = new System.Drawing.Point(319, 400);
-            this.netwokNameTextBox.Name = "netwokNameTextBox";
-            this.netwokNameTextBox.Size = new System.Drawing.Size(121, 20);
-            this.netwokNameTextBox.TabIndex = 17;
+            this.networkNameTextBox.Location = new System.Drawing.Point(467, 442);
+            this.networkNameTextBox.Name = "networkNameTextBox";
+            this.networkNameTextBox.Size = new System.Drawing.Size(121, 20);
+            this.networkNameTextBox.TabIndex = 17;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(316, 381);
+            this.label6.Location = new System.Drawing.Point(464, 423);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 15);
             this.label6.TabIndex = 16;
@@ -286,7 +286,7 @@
             // 
             // serialNumberTextBox
             // 
-            this.serialNumberTextBox.Location = new System.Drawing.Point(467, 441);
+            this.serialNumberTextBox.Location = new System.Drawing.Point(319, 397);
             this.serialNumberTextBox.Name = "serialNumberTextBox";
             this.serialNumberTextBox.Size = new System.Drawing.Size(121, 20);
             this.serialNumberTextBox.TabIndex = 21;
@@ -310,7 +310,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(464, 423);
+            this.label8.Location = new System.Drawing.Point(316, 379);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(106, 15);
             this.label8.TabIndex = 23;
@@ -327,7 +327,7 @@
             this.Controls.Add(this.subnetMaskTextBox);
             this.Controls.Add(this.ipTextBox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.netwokNameTextBox);
+            this.Controls.Add(this.networkNameTextBox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.Refresh);
             this.Controls.Add(this.deleteButton);
@@ -380,12 +380,12 @@
         public System.Windows.Forms.Button deleteButton;
         public System.Windows.Forms.Button Refresh;
         public System.Windows.Forms.TextBox ipTextBox;
-        private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox netwokNameTextBox;
-        private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox networkNameTextBox;
+        public System.Windows.Forms.Label label6;
         public System.Windows.Forms.TextBox serialNumberTextBox;
         public System.Windows.Forms.TextBox subnetMaskTextBox;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Label label8;
     }
 }

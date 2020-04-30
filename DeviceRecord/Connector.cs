@@ -29,7 +29,8 @@ namespace DeviceRecord
         private void testButton_Click(object sender, EventArgs e)
         {
             var form = new UserForm();
-            this.Visible = false;
+            //this.supButton.Enabled = false;
+            //this.testButton.Enabled = false;
             TsEntity db = new TsEntity();
             form.Text = "Администратор отдела тестировки";
 
@@ -58,13 +59,20 @@ namespace DeviceRecord
         private void supButton_Click(object sender, EventArgs e)
         {
             var form = new UserForm();
-            this.Visible = false;
+            //this.supButton.Enabled = false;
+            //this.testButton.Enabled = false;
+            form.ipTextBox.Visible = false;
+            form.subnetMaskTextBox.Visible = false;
+            form.networkNameTextBox.Visible = false;
+            form.label5.Visible = false;
+            form.label6.Visible = false;
+            form.label7.Visible = false;
             TsEntity db = new TsEntity();
             form.Text = "Администратор отдела МТО";
 
 
-            var devices = db.devices.Where(it => it.placement.Equals("Склад МТО")).ToList();
-            var accessories = db.device_accessories.Where(it => it.placement.Equals("Склад МТО")).ToList();
+            var devices = db.devices.Where(it => it.placement.Equals("Склад МТО")).ToList(); 
+            var accessories = db.device_accessories.Where(it => it.placement.Equals("Склад МТО")).ToList(); 
 
             form.devicesDGV.DataSource = devices;
             form.devicesDGV.Columns["device_accessories"].Visible = false;
