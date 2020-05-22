@@ -68,7 +68,9 @@ namespace DeviceRecord
                     case 0:
                         var request = queryForFind("SELECT *FROM devices where 1=1", "deviceName");
                     if (string.IsNullOrWhiteSpace(request))
-                        MessageBox.Show("Введите данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Refresh_Click(sender, e);
+                        
+                        //MessageBox.Show("Введите данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
                     {
                         var adapter = new SqlDataAdapter(request, connectionString);
@@ -80,7 +82,8 @@ namespace DeviceRecord
                     case 1:  
                         request = queryForFind("SELECT *FROM device_accessories where placement = N'" + whereCondition+"'", "accessoryName");
                     if (string.IsNullOrWhiteSpace(request))
-                        MessageBox.Show("Введите данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Refresh_Click(sender, e);
+                        //MessageBox.Show("Введите данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
                     {
                         var adapter = new SqlDataAdapter(request, connectionString);
@@ -95,7 +98,8 @@ namespace DeviceRecord
                                                 join dbo.device_accessories as da
                                                 on d.id = da.deviceId", "deviceName where 1=1");
                     if (string.IsNullOrWhiteSpace(request))
-                        MessageBox.Show("Введите данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Refresh_Click(sender, e);
+                        //MessageBox.Show("Введите данные", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
                     {
                         var adapter = new SqlDataAdapter(request, connectionString);
@@ -395,6 +399,7 @@ namespace DeviceRecord
             }
             else
                 return string.Empty;
+            //return request;
         }
     }
 }
