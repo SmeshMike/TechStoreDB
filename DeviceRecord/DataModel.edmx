@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="device_accessories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="deviceId" Type="int" />
+          <Property Name="accessoryName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="serialNumber" Type="int" Nullable="false" />
+          <Property Name="guaranteeEnd" Type="datetime" Nullable="false" />
+          <Property Name="seller" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="entryDate" Type="datetime" Nullable="false" />
+          <Property Name="price" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="placement" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="responsible" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="devices">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="deviceName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="serialNumber" Type="int" Nullable="false" />
+          <Property Name="guaranteeEnd" Type="datetime" Nullable="false" />
+          <Property Name="seller" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="type" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="entryDate" Type="datetime" Nullable="false" />
+          <Property Name="price" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="placement" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="responsible" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ip" Type="nvarchar" MaxLength="20" />
+          <Property Name="networkName" Type="nvarchar" MaxLength="20" />
+          <Property Name="subnetMask" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__device_ac__devic__25869641">
+          <End Role="devices" Type="Self.devices" Multiplicity="0..1" />
+          <End Role="device_accessories" Type="Self.device_accessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="devices">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="device_accessories">
+              <PropertyRef Name="deviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="insertForSupport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="deviceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="serialNumber" Type="int" Mode="In" />
+          <Parameter Name="guaranteeEnd" Type="datetime" Mode="In" />
+          <Parameter Name="seller" Type="nvarchar" Mode="In" />
+          <Parameter Name="type" Type="nvarchar" Mode="In" />
+          <Parameter Name="entryDate" Type="datetime" Mode="In" />
+          <Parameter Name="price" Type="nvarchar" Mode="In" />
+          <Parameter Name="placement" Type="nvarchar" Mode="In" />
+          <Parameter Name="responsible" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="supportCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateAccessoryForSupport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="accessoryName" Type="nvarchar" Mode="In" />
+          <Parameter Name="serialNumber" Type="int" Mode="In" />
+          <Parameter Name="guaranteeEnd" Type="datetime" Mode="In" />
+          <Parameter Name="seller" Type="nvarchar" Mode="In" />
+          <Parameter Name="type" Type="nvarchar" Mode="In" />
+          <Parameter Name="entryDate" Type="datetime" Mode="In" />
+          <Parameter Name="price" Type="nvarchar" Mode="In" />
+          <Parameter Name="placement" Type="nvarchar" Mode="In" />
+          <Parameter Name="responsible" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateDeviceForSupport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="deviceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="serialNumber" Type="int" Mode="In" />
+          <Parameter Name="guaranteeEnd" Type="datetime" Mode="In" />
+          <Parameter Name="seller" Type="nvarchar" Mode="In" />
+          <Parameter Name="type" Type="nvarchar" Mode="In" />
+          <Parameter Name="entryDate" Type="datetime" Mode="In" />
+          <Parameter Name="price" Type="nvarchar" Mode="In" />
+          <Parameter Name="placement" Type="nvarchar" Mode="In" />
+          <Parameter Name="responsible" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="TsModelStoreContainer">
+          <EntitySet Name="device_accessories" EntityType="Self.device_accessories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="devices" EntityType="Self.devices" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__device_ac__devic__25869641" Association="Self.FK__device_ac__devic__25869641">
+            <End Role="devices" EntitySet="devices" />
+            <End Role="device_accessories" EntitySet="device_accessories" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="device_accessories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deviceId" Type="Int32" />
+          <Property Name="accessoryName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="serialNumber" Type="Int32" Nullable="false" />
+          <Property Name="guaranteeEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="seller" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="entryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="price" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="placement" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="responsible" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="devices" Relationship="Self.FK__device_ac__devic__25869641" FromRole="device_accessories" ToRole="devices" />
+        </EntityType>
+        <EntityType Name="devices">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deviceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="serialNumber" Type="Int32" Nullable="false" />
+          <Property Name="guaranteeEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="seller" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="entryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="price" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="placement" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="responsible" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ip" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="networkName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="subnetMask" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="device_accessories" Relationship="Self.FK__device_ac__devic__25869641" FromRole="devices" ToRole="device_accessories" />
+        </EntityType>
+        <Association Name="FK__device_ac__devic__25869641">
+          <End Role="devices" Type="TsModel.devices" Multiplicity="0..1" />
+          <End Role="device_accessories" Type="Self.device_accessories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="devices">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="device_accessories">
+              <PropertyRef Name="deviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TsEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="device_accessories" EntityType="Self.device_accessories" />
+          <EntitySet Name="devices" EntityType="TsModel.devices" />
+          <AssociationSet Name="FK__device_ac__devic__25869641" Association="Self.FK__device_ac__devic__25869641">
+            <End Role="devices" EntitySet="devices" />
+            <End Role="device_accessories" EntitySet="device_accessories" />
+          </AssociationSet>
+          <FunctionImport Name="supportCollection" ReturnType="Collection(TsModel.supportCollection_Result)" />
+          <FunctionImport Name="insertForSupport">
+            <Parameter Name="deviceName" Mode="In" Type="String" />
+            <Parameter Name="serialNumber" Mode="In" Type="Int32" />
+            <Parameter Name="guaranteeEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="seller" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="entryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="price" Mode="In" Type="String" />
+            <Parameter Name="placement" Mode="In" Type="String" />
+            <Parameter Name="responsible" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateAccessoryForSupport">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="accessoryName" Mode="In" Type="String" />
+            <Parameter Name="serialNumber" Mode="In" Type="Int32" />
+            <Parameter Name="guaranteeEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="seller" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="entryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="price" Mode="In" Type="String" />
+            <Parameter Name="placement" Mode="In" Type="String" />
+            <Parameter Name="responsible" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateDeviceForSupport">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="deviceName" Mode="In" Type="String" />
+            <Parameter Name="serialNumber" Mode="In" Type="Int32" />
+            <Parameter Name="guaranteeEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="seller" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="entryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="price" Mode="In" Type="String" />
+            <Parameter Name="placement" Mode="In" Type="String" />
+            <Parameter Name="responsible" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="supportCollection_Result">
+          <Property Type="String" Name="deviceName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="seller" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="type" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="price" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="placement" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="responsible" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="accessoryName" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="seller1" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="type1" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="price1" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="placement1" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="responsible1" Nullable="false" MaxLength="30" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TsModelStoreContainer" CdmEntityContainer="TsEntity">
+          <EntitySetMapping Name="device_accessories">
+            <EntityTypeMapping TypeName="TsModel.device_accessories">
+              <MappingFragment StoreEntitySet="device_accessories">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="deviceId" ColumnName="deviceId" />
+                <ScalarProperty Name="accessoryName" ColumnName="accessoryName" />
+                <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+                <ScalarProperty Name="guaranteeEnd" ColumnName="guaranteeEnd" />
+                <ScalarProperty Name="seller" ColumnName="seller" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="entryDate" ColumnName="entryDate" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="placement" ColumnName="placement" />
+                <ScalarProperty Name="responsible" ColumnName="responsible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="devices">
+            <EntityTypeMapping TypeName="TsModel.devices">
+              <MappingFragment StoreEntitySet="devices">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="deviceName" ColumnName="deviceName" />
+                <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+                <ScalarProperty Name="guaranteeEnd" ColumnName="guaranteeEnd" />
+                <ScalarProperty Name="seller" ColumnName="seller" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="entryDate" ColumnName="entryDate" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="placement" ColumnName="placement" />
+                <ScalarProperty Name="responsible" ColumnName="responsible" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="networkName" ColumnName="networkName" />
+                <ScalarProperty Name="subnetMask" ColumnName="subnetMask" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="supportCollection" FunctionName="TsModel.Store.supportCollection">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TsModel.supportCollection_Result">
+                <ScalarProperty Name="deviceName" ColumnName="deviceName" />
+                <ScalarProperty Name="seller" ColumnName="seller" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="placement" ColumnName="placement" />
+                <ScalarProperty Name="responsible" ColumnName="responsible" />
+                <ScalarProperty Name="accessoryName" ColumnName="accessoryName" />
+                <ScalarProperty Name="seller1" ColumnName="seller1" />
+                <ScalarProperty Name="type1" ColumnName="type1" />
+                <ScalarProperty Name="price1" ColumnName="price1" />
+                <ScalarProperty Name="placement1" ColumnName="placement1" />
+                <ScalarProperty Name="responsible1" ColumnName="responsible1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="insertForSupport" FunctionName="TsModel.Store.insertForSupport" />
+          <FunctionImportMapping FunctionImportName="UpdateAccessoryForSupport" FunctionName="TsModel.Store.UpdateAccessoryForSupport" />
+          <FunctionImportMapping FunctionImportName="UpdateDeviceForSupport" FunctionName="TsModel.Store.UpdateDeviceForSupport" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="CopyToOutputDirectory" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
