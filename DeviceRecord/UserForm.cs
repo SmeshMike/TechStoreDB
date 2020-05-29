@@ -276,6 +276,8 @@ namespace DeviceRecord
             if (accessoriesDGV.SelectedRows.Count > 0)
             {
                 var id = Convert.ToInt32(row.Cells["id"].Value.ToString());
+                db.device_accessories.Remove(db.device_accessories.Where(it => it.id == id).FirstOrDefault());
+                db.SaveChanges();
             }
 
             this.Refresh_Click(sender, e);
