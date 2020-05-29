@@ -47,6 +47,14 @@
             this.sellerComboBox = new System.Windows.Forms.ComboBox();
             this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.okButton = new System.Windows.Forms.Button();
+            this.globalTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ipTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.subnetMaskTextBox = new System.Windows.Forms.TextBox();
+            this.networkNameTextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // nameLabel
@@ -70,7 +78,7 @@
             // priceLabel
             // 
             this.priceLabel.AutoSize = true;
-            this.priceLabel.Location = new System.Drawing.Point(16, 185);
+            this.priceLabel.Location = new System.Drawing.Point(16, 214);
             this.priceLabel.Name = "priceLabel";
             this.priceLabel.Size = new System.Drawing.Size(40, 15);
             this.priceLabel.TabIndex = 2;
@@ -79,7 +87,7 @@
             // placementLabel
             // 
             this.placementLabel.AutoSize = true;
-            this.placementLabel.Location = new System.Drawing.Point(16, 214);
+            this.placementLabel.Location = new System.Drawing.Point(16, 243);
             this.placementLabel.Name = "placementLabel";
             this.placementLabel.Size = new System.Drawing.Size(84, 15);
             this.placementLabel.TabIndex = 3;
@@ -88,7 +96,7 @@
             // responsibleLabel
             // 
             this.responsibleLabel.AutoSize = true;
-            this.responsibleLabel.Location = new System.Drawing.Point(16, 243);
+            this.responsibleLabel.Location = new System.Drawing.Point(16, 272);
             this.responsibleLabel.Name = "responsibleLabel";
             this.responsibleLabel.Size = new System.Drawing.Size(104, 15);
             this.responsibleLabel.TabIndex = 4;
@@ -110,7 +118,7 @@
             // 
             // priceTextBox
             // 
-            this.priceTextBox.Location = new System.Drawing.Point(201, 182);
+            this.priceTextBox.Location = new System.Drawing.Point(201, 211);
             this.priceTextBox.Name = "priceTextBox";
             this.priceTextBox.Size = new System.Drawing.Size(154, 20);
             this.priceTextBox.TabIndex = 7;
@@ -118,7 +126,7 @@
             // placementComboBox
             // 
             this.placementComboBox.FormattingEnabled = true;
-            this.placementComboBox.Location = new System.Drawing.Point(201, 211);
+            this.placementComboBox.Location = new System.Drawing.Point(201, 240);
             this.placementComboBox.Name = "placementComboBox";
             this.placementComboBox.Size = new System.Drawing.Size(154, 21);
             this.placementComboBox.TabIndex = 8;
@@ -126,7 +134,7 @@
             // responsibleComboBox
             // 
             this.responsibleComboBox.FormattingEnabled = true;
-            this.responsibleComboBox.Location = new System.Drawing.Point(201, 240);
+            this.responsibleComboBox.Location = new System.Drawing.Point(201, 269);
             this.responsibleComboBox.Name = "responsibleComboBox";
             this.responsibleComboBox.Size = new System.Drawing.Size(154, 21);
             this.responsibleComboBox.TabIndex = 9;
@@ -167,7 +175,7 @@
             // 
             // entryDateTextBox
             // 
-            this.entryDateTextBox.Location = new System.Drawing.Point(201, 153);
+            this.entryDateTextBox.Location = new System.Drawing.Point(201, 182);
             this.entryDateTextBox.Name = "entryDateTextBox";
             this.entryDateTextBox.Size = new System.Drawing.Size(154, 20);
             this.entryDateTextBox.TabIndex = 6;
@@ -175,7 +183,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 156);
+            this.label4.Location = new System.Drawing.Point(16, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(117, 15);
             this.label4.TabIndex = 16;
@@ -196,10 +204,11 @@
             this.typeComboBox.Name = "typeComboBox";
             this.typeComboBox.Size = new System.Drawing.Size(154, 21);
             this.typeComboBox.TabIndex = 5;
+            this.typeComboBox.Validated += new System.EventHandler(this.typeComboBox_Validated);
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(201, 357);
+            this.okButton.Location = new System.Drawing.Point(204, 411);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(154, 23);
             this.okButton.TabIndex = 17;
@@ -207,11 +216,84 @@
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
+            // globalTypeComboBox
+            // 
+            this.globalTypeComboBox.FormattingEnabled = true;
+            this.globalTypeComboBox.Location = new System.Drawing.Point(201, 154);
+            this.globalTypeComboBox.Name = "globalTypeComboBox";
+            this.globalTypeComboBox.Size = new System.Drawing.Size(154, 21);
+            this.globalTypeComboBox.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 157);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 15);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Вид:";
+            // 
+            // ipTextBox
+            // 
+            this.ipTextBox.Location = new System.Drawing.Point(201, 360);
+            this.ipTextBox.Name = "ipTextBox";
+            this.ipTextBox.Size = new System.Drawing.Size(154, 20);
+            this.ipTextBox.TabIndex = 47;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 363);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 15);
+            this.label5.TabIndex = 48;
+            this.label5.Text = "IP:";
+            // 
+            // subnetMaskTextBox
+            // 
+            this.subnetMaskTextBox.Location = new System.Drawing.Point(201, 331);
+            this.subnetMaskTextBox.Name = "subnetMaskTextBox";
+            this.subnetMaskTextBox.Size = new System.Drawing.Size(154, 20);
+            this.subnetMaskTextBox.TabIndex = 46;
+            // 
+            // networkNameTextBox
+            // 
+            this.networkNameTextBox.Location = new System.Drawing.Point(201, 302);
+            this.networkNameTextBox.Name = "networkNameTextBox";
+            this.networkNameTextBox.Size = new System.Drawing.Size(154, 20);
+            this.networkNameTextBox.TabIndex = 44;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(17, 334);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(98, 15);
+            this.label6.TabIndex = 45;
+            this.label6.Text = "Маска подсети:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(17, 305);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(71, 15);
+            this.label7.TabIndex = 43;
+            this.label7.Text = "Имся сети:";
+            // 
             // SupportRedactorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 392);
+            this.ClientSize = new System.Drawing.Size(370, 440);
+            this.Controls.Add(this.ipTextBox);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.subnetMaskTextBox);
+            this.Controls.Add(this.networkNameTextBox);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.globalTypeComboBox);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.typeComboBox);
             this.Controls.Add(this.sellerComboBox);
@@ -259,5 +341,13 @@
         public System.Windows.Forms.ComboBox sellerComboBox;
         public System.Windows.Forms.ComboBox typeComboBox;
         public System.Windows.Forms.Button okButton;
+        public System.Windows.Forms.ComboBox globalTypeComboBox;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox ipTextBox;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox subnetMaskTextBox;
+        public System.Windows.Forms.TextBox networkNameTextBox;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label label7;
     }
 }

@@ -63,6 +63,30 @@
           <Parameter Name="responsible" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="supportCollection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateAccessoryForSupport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="accessoryName" Type="nvarchar" Mode="In" />
+          <Parameter Name="serialNumber" Type="int" Mode="In" />
+          <Parameter Name="guaranteeEnd" Type="datetime" Mode="In" />
+          <Parameter Name="seller" Type="nvarchar" Mode="In" />
+          <Parameter Name="type" Type="nvarchar" Mode="In" />
+          <Parameter Name="entryDate" Type="datetime" Mode="In" />
+          <Parameter Name="price" Type="nvarchar" Mode="In" />
+          <Parameter Name="placement" Type="nvarchar" Mode="In" />
+          <Parameter Name="responsible" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateDeviceForSupport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="deviceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="serialNumber" Type="int" Mode="In" />
+          <Parameter Name="guaranteeEnd" Type="datetime" Mode="In" />
+          <Parameter Name="seller" Type="nvarchar" Mode="In" />
+          <Parameter Name="type" Type="nvarchar" Mode="In" />
+          <Parameter Name="entryDate" Type="datetime" Mode="In" />
+          <Parameter Name="price" Type="nvarchar" Mode="In" />
+          <Parameter Name="placement" Type="nvarchar" Mode="In" />
+          <Parameter Name="responsible" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="TsModelStoreContainer">
           <EntitySet Name="device_accessories" EntityType="Self.device_accessories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="devices" EntityType="Self.devices" Schema="dbo" store:Type="Tables" />
@@ -132,6 +156,30 @@
           </AssociationSet>
           <FunctionImport Name="supportCollection" ReturnType="Collection(TsModel.supportCollection_Result)" />
           <FunctionImport Name="insertForSupport">
+            <Parameter Name="deviceName" Mode="In" Type="String" />
+            <Parameter Name="serialNumber" Mode="In" Type="Int32" />
+            <Parameter Name="guaranteeEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="seller" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="entryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="price" Mode="In" Type="String" />
+            <Parameter Name="placement" Mode="In" Type="String" />
+            <Parameter Name="responsible" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateAccessoryForSupport">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="accessoryName" Mode="In" Type="String" />
+            <Parameter Name="serialNumber" Mode="In" Type="Int32" />
+            <Parameter Name="guaranteeEnd" Mode="In" Type="DateTime" />
+            <Parameter Name="seller" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="entryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="price" Mode="In" Type="String" />
+            <Parameter Name="placement" Mode="In" Type="String" />
+            <Parameter Name="responsible" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateDeviceForSupport">
+            <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="deviceName" Mode="In" Type="String" />
             <Parameter Name="serialNumber" Mode="In" Type="Int32" />
             <Parameter Name="guaranteeEnd" Mode="In" Type="DateTime" />
@@ -218,6 +266,8 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="insertForSupport" FunctionName="TsModel.Store.insertForSupport" />
+          <FunctionImportMapping FunctionImportName="UpdateAccessoryForSupport" FunctionName="TsModel.Store.UpdateAccessoryForSupport" />
+          <FunctionImportMapping FunctionImportName="UpdateDeviceForSupport" FunctionName="TsModel.Store.UpdateDeviceForSupport" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -226,7 +276,7 @@
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="CopyToOutputDirectory" />
       </DesignerInfoPropertySet>
     </Connection>
     <Options>
